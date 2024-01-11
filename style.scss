@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+:root {
+    --bg-main: #2a2a38;
+    --color-txt: hsl(0, 0%, 15%);
+    --border-radius: 10px;
+    --font-size-lg: 25px;
+    --blue: hsl(196, 50%, 60%);
+    --cells_color: hsl(0, 15%, 77%);
+    --cells_fill: hsl(0, 15%, 65%);
+    --cell_clicked: hsl(0, 66%, 71%);
+    --cell_high: hsl(240, 100%, 90%);
+    --color_help: hsl(120, 100%, 85%);
+    --bg_color: hsl(0, 100%, 60%);
+}
+
+body,
+html {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+header {
+    display: grid;
+    & > * {
+        justify-content: center;
+        text-align: center;
+    }
+    & h1 {
+        margin-bottom: 2px;
+    }
+    & h4 {
+        text-align: center;
+    }
+    & .entry {
+        text-align: center;
+    }
+}
+
+.wrapper {
+    display: grid;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.rules {
+    padding: 15px;
+    background-color: lightgray;
+    margin-top: 15px;
+}
+
+.header__wrapper {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    & .score_results {
+        height: 100%;
+    }
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+    }
+}
+.start {
+    display: none !important;
+}
+
+.input-name {
+    width: 100px;
+    height: 25px;
+}
+
+.btn {
+    height: 40px;
+    width: 140px;
+    background-color: var(--blue);
+    color: var(--color-txt);
+    border-radius: var(--border-radius);
+    display: grid;
+    place-items: center;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+    border: none;
+    &:hover {
+        background-color: hsl(196, 50%, 75%);
+    }
+}
+
+.difficulty-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    & button {
+        width: 100px;
+        height: 40px;
+        cursor: pointer;
+        font-size: 22px;
+        border-radius: 8px;
+        border: 1px solid hsl(0, 15%, 50%);
+        &:hover {
+            background-color: hsl(0, 0%, 80%);
+        }
+    }
+}
+
+.container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(9, auto);
+        grid-template-rows: repeat(9, auto);
+        gap: 3px;
+        place-items: center;
+        &__cell {
+            display: flex;
+            font-size: 30px;
+            height: 60px;
+            width: 60px;
+            background-color: var(--cells_color);
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+    }
+    &__buttons {
+        font-size: 50px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        place-items: center;
+        gap: 8px;
+        & .button {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            background: lightgray;
+            height: 90px;
+            width: 90px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        & .del-but {
+            width: 100%;
+            grid-column: 2;
+        }
+    }
+}
+
+.delete-button {
+    margin-top: 5px;
+    font-size: 50px;
+    background-color: lightgray;
+    cursor: pointer;
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    width: 100%;
+}
+
+.wrapper-button {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.container__grid__cell {
+    &:nth-child(9n + 3),
+    &:nth-child(9n + 6) {
+        margin-right: 6px;
+    }
+    @for $i from 19 to 28 {
+        &:nth-child(27n + #{$i}) {
+            margin-bottom: 6px;
+        }
+    }
+}
+
+.fill {
+    background-color: var(--cells_fill);
+}
+
+.highlighted {
+    background-color: var(--cell_high);
+}
+
+.clicked {
+    background-color: var(--cell_clicked);
+}
+.help {
+    background-color: var(--color_help);
+}
+.wrong {
+    background-color: var(--bg_color);
+}

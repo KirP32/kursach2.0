@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./java.js" type="module"></script>
+    <title>Судоку для всех!</title>
+</head>
+
+<body>
+    <header>
+        <div class="header__wrapper">
+            <div class="score__wrapper">
+                <h4>Рейтинговая таблица</h4>
+                <div class="score_results" id="ScoresContainer">
+                </div>
+            </div>
+            <div class="header__wrapper__menu">
+                <h1>Добро пожаловать на сайт MegaSudoku!</h1>
+                <h4>Пожалуйста, введите имя для сохранения результата!</h4>
+                <div class="button"><input type="text" placeholder="Ваше имя" maxlength="13" class="input-name"
+                        id="input-name">
+                </div>
+                <div id="difficulty-buttons" class="difficulty-buttons">
+                    <button onclick="setDifficulty(1)">Easy</button>
+                    <button onclick="setDifficulty(40)">Medium</button>
+                    <button onclick="setDifficulty(60)">Hard</button>
+                </div>
+                <div class="wrapper-button">
+                    <button class="btn" id="btn-play" type="button">Играть!</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="rules">
+        <p>Используйте цифры от 1 до 9.
+            Внутри игрового поля находятся 9 "квадратов" (состоящих из 3 x 3 клеток). Каждая горизонтальная строка,
+            вертикальный столбец и квадрат (9 клеток каждый) должны заполняться цифрами 1-9, не повторяя никаких чисел в
+            строке, столбце или квадрате.</p>
+    </div>
+    <div class="container start">
+        <div class="container__grid">
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+            <div class="container__grid__cell"></div>
+        </div>
+        <div class="wrapper">
+            <div class="score">
+                <h3>Ваш счёт: <span id="ScoreBD">0</span></h3>
+            </div>
+            <div class="container__buttons">
+                <div class="button">1</div>
+                <div class="button">2</div>
+                <div class="button">3</div>
+                <div class="button">4</div>
+                <div class="button">5</div>
+                <div class="button">6</div>
+                <div class="button">7</div>
+                <div class="button">8</div>
+                <div class="button">9</div>
+            </div>
+            <div class="delete-button">Удалить</div>
+        </div>
+    </div>
+</body>
+
+</html>
